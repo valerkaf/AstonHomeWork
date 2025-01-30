@@ -3,16 +3,10 @@ package homeWork1.list;
 import java.util.Arrays;
 import java.util.Comparator;
 
-/**
- * Кастомная реализация ArrayList.
- */
 public class CustomArrayList<T> implements CustomList<T> {
     private Object[] elements;
     private int size;
 
-    /**
-     * Конструктор - создание нового объекта CustomArrayList с начальным размером массива.
-     */
     public CustomArrayList() {
         elements = new Object[10];
         size = 0;
@@ -26,7 +20,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 
     @Override
     public void add(int index, T element) {
-        checkIndex(index);
+        checkIndexForAdd(index);
         ensureCapacity();
         System.arraycopy(elements, index, elements, index + 1, size - index);
         elements[index] = element;
@@ -56,24 +50,24 @@ public class CustomArrayList<T> implements CustomList<T> {
     public void sort(Comparator<? super T> comparator) {
         Arrays.sort((T[]) elements, 0, size, comparator);
     }
-    /**
-     * Увеличение емкости массива при необходимости.
-     */
+
     private void ensureCapacity() {
         if (size == elements.length) {
             elements = Arrays.copyOf(elements, elements.length * 2);
         }
     }
-    /**
-     * Проверка корректности индекса для операций получения и удаления.
-     * @param index индекс элемента
-     */
+
     private void checkIndex(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Индекс: " + index + ", Размер: " + size);
         }
     }
 
+    private void checkIndexForAdd(int index) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("Индекс: " + index + ", Размер: " + size);
+        }
+    }
 
     @Override
     public int size() {
