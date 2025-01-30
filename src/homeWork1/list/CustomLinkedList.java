@@ -3,11 +3,16 @@ package homeWork1.list;
 import java.util.Arrays;
 import java.util.Comparator;
 
+/**
+ * Кастомная реализация LinkedList.
+ */
 public class CustomLinkedList<T> implements CustomList<T> {
     private Node<T> head;
     private Node<T> tail;
     private int size;
-
+    /**
+     * Узел односвязного списка.
+     */
     private static class Node<T> {
         T data;
         Node<T> next;
@@ -37,7 +42,7 @@ public class CustomLinkedList<T> implements CustomList<T> {
 
     @Override
     public void add(int index, T element) {
-        checkIndexForAdd(index);
+        checkIndex(index);
         if (index == 0) {
             Node<T> newNode = new Node<>(element);
             newNode.next = head;
@@ -108,6 +113,12 @@ public class CustomLinkedList<T> implements CustomList<T> {
         return size;
     }
 
+    /**
+     * Возвращает узел по индексу.
+     *
+     * @param index индекс узла
+     * @return узел
+     */
     private Node<T> getNode(int index) {
         checkIndex(index);
         Node<T> current = head;
@@ -116,16 +127,16 @@ public class CustomLinkedList<T> implements CustomList<T> {
         }
         return current;
     }
-
+    /**
+     * Проверка корректности индекса для операций получения и удаления.
+     *
+     * @param index индекс элемента
+     */
     private void checkIndex(int index) {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Индекс: " + index + ", Размер: " + size);
         }
     }
 
-    private void checkIndexForAdd(int index) {
-        if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException("Индекс: " + index + ", Размер: " + size);
-        }
-    }
+
 }
