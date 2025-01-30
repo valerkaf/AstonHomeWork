@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /**
- * Кастомная реализация ArrayList.
+ * Кастомная реализация ArrayList .
  */
 public class CustomArrayList<T> implements CustomList<T> {
     private Object[] elements;

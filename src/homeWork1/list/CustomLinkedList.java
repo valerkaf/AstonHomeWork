@@ -128,7 +128,7 @@ public class CustomLinkedList<T> implements CustomList<T> {
         return current;
     }
     /**
-     * Проверка корректности индекса для операций получения и удаления.
+     * Проверка корректности индекса для операций получения и удаления .
      *
      * @param index индекс элемента
      */

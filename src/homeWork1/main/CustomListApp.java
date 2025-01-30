@@ -110,7 +110,7 @@ public class CustomListApp {
     private static void fillWithRandom(CustomList<Integer> list, int count) {
         Random random = new Random();
         for (int i = 0; i < count; i++) {
-            // Генерация случайного числа от 1 до 999
+            // Генерация случайного  числа от 1 до 999
             list.add(random.nextInt(999) + 1);
         }
     }
